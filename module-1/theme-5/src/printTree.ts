@@ -6,7 +6,7 @@ import type { TNode } from './types';
  * @param {string} prefix - Префикс содержащий пробелы и разделители, передаем сверху для каждого ребенка.
  * @param {boolean} isLast - Последний ли элемент в узле.
  */
-export function printTree(node: TNode, prefix: string = "", isLast: boolean = true) {
+export const printTree = (node: TNode, prefix: string = "", isLast: boolean = true) => {
   const branchForm = `${isLast ? treeElement.single : treeElement.multiple}${treeElement.path}` ;
   let currentNodeName = `${prefix}${branchForm} ${node.name}\n`
 
