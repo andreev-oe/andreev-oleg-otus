@@ -14,19 +14,19 @@ import {
 
 
 describe('Тест функции отображения дерева', () => {
-  test('Вариант 1', () => {
+  test('Простое дерево с 2 уровнями глубины', () => {
     expect(printTree(dataSample1)).toBe(expectedOutput1);
   })
-  test('Вариант 2', () => {
+  test('Дерево с 3 уровнями глубины', () => {
     expect(printTree(dataSample2)).toBe(expectedOutput2);
   })
-  test('Вариант 3', () => {
+  test('Глубокое дерево с 4 уровнями', () => {
     expect(printTree(dataSample3)).toBe(expectedOutput3);
   })
-  test('Вариант 4', () => {
+  test('Дерево с одним корневым элементом', () => {
     expect(printTree(dataSample4)).toBe(expectedOutput4);
   })
-  test('Вариант 5', () => {
+  test('Сложное дерево с разветвленной структурой', () => {
     expect(printTree(dataSample5)).toBe(expectedOutput5);
   })
 })
