@@ -3,6 +3,7 @@ import express from 'express';
 import { join, dirname } from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 import indexRouter from './routes/index.js';
@@ -14,6 +15,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
+
+// certificate
+const credentials  = {
+  key: fs.readFileSync(join(__dirname, 'src', 'credentials', 'private-key.key')),
+  cert: fs.readFileSync(join(__dirname, 'src', 'credentials', 'certificate.crt'))
+};
 
 // view engine setup
 app.set('views', join(__dirname, 'views'));
@@ -46,4 +53,4 @@ app.use((err, req, res, next) => {
   res.render('error');
 });
 
-export default app;
+export { app, credentials };
