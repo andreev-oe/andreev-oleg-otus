@@ -18,7 +18,6 @@ describe('Тест API курсов', () => {
   })
 })
 
-
 describe('Тест API занятий', () => {
   test('Получение списка занятий курса', () => {
     expect(noop()).toBe(true);
@@ -37,7 +36,6 @@ describe('Тест API занятий', () => {
   })
 })
 
-
 describe('Тест API комментариев', () => {
   test('Получение списка комментариев', () => {
     expect(noop()).toBe(true);
@@ -49,6 +47,12 @@ describe('Тест API комментариев', () => {
     expect(noop()).toBe(true);
   })
   test('Удаление комментария', () => {
+    expect(noop()).toBe(true);
+  })
+})
+
+describe('Поиск курса по сайту', () => {
+  test('Получение списка курсов по поиску', () => {
     expect(noop()).toBe(true);
   })
 })

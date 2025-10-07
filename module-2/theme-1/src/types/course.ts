@@ -24,3 +24,7 @@ type TCourse = {
   appointedUsersIds: string[];
   rating: number;
 }
+
+type TSearch = {
+  search: string;
+}
