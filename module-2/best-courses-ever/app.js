@@ -10,11 +10,15 @@ import indexRouter from './routes/index.js';
 import authRouter from './routes/auth.js';
 import courseRouter from './routes/course.js';
 import coursesRouter from './routes/courses.js';
+import { connectDB } from './config/mongodb.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 const app = express();
+
+// Подключение к базе данных
+connectDB();
 
 // certificate
 const credentials  = {
