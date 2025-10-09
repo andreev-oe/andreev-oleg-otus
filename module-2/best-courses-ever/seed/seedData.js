@@ -1,33 +1,28 @@
-import { hashPassword } from './utils.js';
-import dotenv from 'dotenv';
+import { hashPassword } from '../src/utils/utils.js';
 
-dotenv.config();
-
-export const MONGO_URI = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@localhost:${process.env.MONGO_CONTAINER_PORT}/${process.env.MONGO_DATABASE}?authSource=admin`;
-
-export const mockUsers = [
+export const getMockUsers = async () => [
   {
     id: 'user-1',
-    username: 'john_doe',
+    login: 'john_doe',
     email: 'john@example.com',
     password: await hashPassword('password123'),
-    name: 'John Doe',
+    fullName: 'John Doe',
     role: 'admin'
   },
   {
     id: 'user-2',
-    username: 'jane_smith',
+    login: 'jane_smith',
     email: 'jane@example.com',
     password: await hashPassword('password123'),
-    name: 'Jane Smith',
+    fullName: 'Jane Smith',
     role: 'author'
   },
   {
     id: 'user-3',
-    username: 'mike_johnson',
+    login: 'mike_johnson',
     email: 'mike@example.com',
     password: await hashPassword('password123'),
-    name: 'Mike Johnson',
+    fullName: 'Mike Johnson',
     role: 'user'
   }
 ];

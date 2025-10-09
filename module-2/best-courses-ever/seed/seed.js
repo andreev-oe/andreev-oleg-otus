@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
 import { User } from '../src/shemas/user.js';
 import { Course, Comment } from '../src/shemas/course.js';
-import { mockComments, mockCourses, mockUsers, MONGO_URI } from './consts.js';
+import { mockComments, mockCourses, getMockUsers } from './seedData.js';
+import { MONGO_URI } from '../config/db.config.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const seedDatabase = async () => {
   try {
@@ -9,12 +13,13 @@ const seedDatabase = async () => {
     console.log('Подключен к MongoDB');
 
     // Очистка базы
-    await User.deleteMany();
-    await Course.deleteMany();
-    await Comment.deleteMany();
+    await User.collection.drop();
+    await Course.collection.drop();
+    await Comment.collection.drop();
     console.log('БД очищена');
 
     // Создаем данные
+    const mockUsers = await getMockUsers();
     const users = await User.create(mockUsers);
     console.log(`Создано ${users.length} пользователей`);
 

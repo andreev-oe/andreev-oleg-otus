@@ -15,13 +15,21 @@ const userSchema = new Schema({
     required: true,
     default: 'user',
   },
-  name: {
+  fullName: {
     type: String,
     required: true,
   },
   createdCoursesIds: [String],
-  login: String,
-  password: String,
+  email: String,
+  login: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
 }, {
   timestamps: true,
   _id: true,
