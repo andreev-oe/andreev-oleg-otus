@@ -1,11 +1,9 @@
 import mongoose from 'mongoose';
+import { MONGO_URI } from './consts.js';
 
 export const connectDB = async () => {
   try {
-    console.log(process.env)
-    const mongoURI = `mongodb://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@localhost:${process.env.MONGO_CONTAINER_PORT}/${process.env.MONGO_DATABASE}?authSource=admin`;
-
-    await mongoose.connect(mongoURI);
+    await mongoose.connect(MONGO_URI);
 
     console.log('MongoDB успешно подключена');
   } catch (error) {

@@ -1,6 +1,13 @@
 import { model, Schema } from 'mongoose';
+import mongooseLeanVirtuals from 'mongoose-lean-virtuals';
+import autopopulate from 'mongoose-autopopulate';
 
 const extraMaterialsSchema = new Schema({
+  id: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   title: String,
   content: Schema.Types.Mixed,
   type: {
@@ -8,6 +15,26 @@ const extraMaterialsSchema = new Schema({
     required: true,
     enum: ['video', 'article', 'document', 'code', 'link', 'image'],
   },
+}, {
+  timestamps: true,
+  _id: true,
+});
+
+const commentSchema = new Schema({
+  id: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  text: String,
+  authorId: {
+    type: String,
+    ref: 'User',
+  },
+  lessonId: {
+    type: String,
+    ref: 'Lesson',
+  }
 }, {
   timestamps: true,
   _id: true,
@@ -82,9 +109,13 @@ const courseSchema = new Schema({
   _id: true,
 });
 
+courseSchema.plugin(mongooseLeanVirtuals);
+courseSchema.plugin(autopopulate);
+commentSchema.plugin(mongooseLeanVirtuals);
+commentSchema.plugin(autopopulate);
+
 courseSchema.index({ title: 'text', tags: 'text' });
 courseSchema.index({ rating: -1 });
 
-export const ExtraMaterials = model('ExtraMaterials', extraMaterialsSchema);
-export const Lesson = model('Lesson', lessonSchema);
 export const Course = model('Course', courseSchema);
+export const Comment = model('Comment', commentSchema);
