@@ -5,6 +5,8 @@
   "scripts": {
     "start": "node bin/www",
     "build": "tsc",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
     "seed": "node seed/seed.js",
     "test": "jest",
     "test:coverage": "jest --coverage"
